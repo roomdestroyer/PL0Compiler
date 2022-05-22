@@ -4,10 +4,11 @@
 
 <!-- TOC -->
 
-[Quick Start](#Quick Start)
+
 <a href=https://github.com/roomdestroyer/PL0Compiler#quick-start>Quick Start</a>
 
-[1. 总体框架](#1. 总体框架)
+<a href=[https://github.com/roomdestroyer/PL0Compiler#quick-start](https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#1-%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6)>1. 总体框架</a>
+
 
 [2. 词法分析器](#2. 词法分析器)
 
