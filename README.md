@@ -5,6 +5,7 @@
 <!-- TOC -->
 
 [Quick Start](#Quick Start)
+<a href=https://github.com/roomdestroyer/PL0Compiler#quick-start>Quick Start</a>
 
 [1. 总体框架](#1. 总体框架)
 
