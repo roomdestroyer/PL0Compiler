@@ -10,15 +10,15 @@
 <a href=https://github.com/roomdestroyer/PL0Compiler#1-%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6>1. 总体框架</a>
 
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#2-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8>2. 词法分析器</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#2-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8>2. 词法分析器</a>
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#3-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8>3. 语法分析器</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#3-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8>3. 语法分析器</a>
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#4-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%99%A8>4. 语义分析器</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#4-%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%99%A8>4. 语义分析器</a>
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#5-%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90>5. 目标代码生成</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#5-%E7%9B%AE%E6%A0%87%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90>5. 目标代码生成</a>
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#6-%E5%BE%85%E6%89%A9%E5%B1%95%E7%9A%84%E5%8A%9F%E8%83%BD>6. 待扩展的功能</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#6-%E5%BE%85%E6%89%A9%E5%B1%95%E7%9A%84%E5%8A%9F%E8%83%BD>6. 待扩展的功能</a>
 
 
 #### 
