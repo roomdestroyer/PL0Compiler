@@ -164,10 +164,10 @@ parser_output_file_ = os.path.join(parser_output_dir, "PL0_code0.out")
 - 栈区空间定义：
 
   ```
-  max_procedure_nums = 3
+  call_init_offset = 3
   ```
 
-  > 执行程序调用时，需要为子过程预分配一些栈空间，栈空间 = 预分配空间 + 变量个数，在本编译器中，最少给栈区预分配 3 个空间。
+  在过程调用时，首先在栈中开辟三个空间，存放静态链SL、动态链DL（B）和返回地址RA（P）。
 
 - 中间代码定义：
 
