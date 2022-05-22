@@ -7,7 +7,7 @@
 
 <a href=https://github.com/roomdestroyer/PL0Compiler#quick-start>Quick Start</a>
 
-<a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#1-%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6>1. 总体框架</a>
+<a href=https://github.com/roomdestroyer/PL0Compiler#1-%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6>1. 总体框架</a>
 
 
 <a href=https://github.com/roomdestroyer/PL0Compiler/blob/main/README.md#2-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8>2. 词法分析器</a>
