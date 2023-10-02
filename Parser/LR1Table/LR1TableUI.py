@@ -21,7 +21,6 @@ class LR1TableUI(wx.Frame):
         self.grid.SetCellValue(0, 0, '状态')
 
         for i in range(len(self.action) + len(self.goto) - 1):
-            print(f"i = {i}, len(self.action) = {len(self.action)}, len(self.goto) = {len(self.goto)}")
             if i < len(self.action):
                 self.grid.SetCellValue(0, i + 1, self.action[i])
             else:

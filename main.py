@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 from Lexer import lexer
 from Parser import lr1_parser
 from Parser import lr1_table_ui

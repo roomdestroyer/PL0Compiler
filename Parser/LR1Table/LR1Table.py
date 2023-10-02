@@ -1,5 +1,6 @@
 from .Grammar import Grammar
 
+end_sign = '#'
 
 def first_follow(G):
     def union(set_1, set_2):
@@ -9,7 +10,7 @@ def first_follow(G):
     first = {symbol: set() for symbol in G.symbols}
     first.update((terminal, {terminal}) for terminal in G.terminals)  # first terminal 加入
     follow = {symbol: set() for symbol in G.nonterminals}
-    follow[G.start].add('.')
+    follow[G.start].add(end_sign)
     while True:
         updated = False
         for head, bodies in G.grammar.items():
@@ -55,9 +56,11 @@ class LR1Table:
 
         # 构建项目集规范族
         self.Collection = self.LR1_items(self.G_prime)
+        for i, item in enumerate(self.Collection):
+            print(i, ' ', item)
 
         # 构建LR1分析表
-        self.action = sorted(list(self.G_prime.terminals)) + ['.']
+        self.action = sorted(list(self.G_prime.terminals)) + [end_sign]
         self.goto = sorted(list(self.G_prime.nonterminals - {self.G_prime.start}))
         self.parse_table_symbols = self.action + self.goto
         self.parse_table = self.LR1_construct_table()
@@ -81,22 +84,22 @@ class LR1Table:
             item_len = len(ret)
             for head, bodies in dict_of_trans.copy().items():
                 for body in bodies.copy():
-                    if '.' in body[:-1]:
-                        symbol_after_dot = body[body.index('.') + 1]
+                    if end_sign in body[:-1]:
+                        symbol_after_dot = body[body.index(end_sign) + 1]
                         if symbol_after_dot in self.G_prime.nonterminals:
-                            symbol_need_first_loc = body.index('.') + 2
+                            symbol_need_first_loc = body.index(end_sign) + 2
                             if symbol_need_first_loc == len(body):
                                 # A -> ... .B
                                 for G_body in self.G_prime.grammar[symbol_after_dot]:
                                     ret.setdefault((symbol_after_dot, head[1]), set()).add(
-                                        ('.',) if G_body == ('^',) else ('.',) + G_body
+                                        (end_sign,) if G_body == ('^',) else (end_sign,) + G_body
                                     )
                             else:
                                 # A -> ... .BC
                                 for j in self.construct_follow(body[symbol_need_first_loc:], head[1]):
                                     for G_body in self.G_prime.grammar[symbol_after_dot]:
                                         ret.setdefault((symbol_after_dot, j), set()).add(
-                                            ('.',) if G_body == ('^',) else ('.',) + G_body
+                                            (end_sign,) if G_body == ('^',) else (end_sign,) + G_body
                                         )
             if item_len == len(ret):
                 break
@@ -107,18 +110,18 @@ class LR1Table:
 
         for head, bodies in state.items():
             for body in bodies:
-                if '.' in body[:-1]:
-                    dot_pos = body.index('.')
+                if end_sign in body[:-1]:
+                    dot_pos = body.index(end_sign)
                     if body[dot_pos + 1] == c:
-                        replaced_dot_body = body[:dot_pos] + (c, '.') + body[dot_pos + 2:]
+                        replaced_dot_body = body[:dot_pos] + (c, end_sign) + body[dot_pos + 2:]
                         for C_head, C_bodies in self.LR1_CLOSURE({head: {replaced_dot_body}}).items():
                             goto.setdefault(C_head, set()).update(C_bodies)
 
         return goto
 
     def LR1_items(self, G_prime):
-        # start_item == {("S'", '#'): {('.', 'S')}}
-        start_item = {(G_prime.start, '.'): {('.', G_prime.start[:-1])}}
+        # start_item == {("S'", '#'): {(end_sign, 'S')}}
+        start_item = {(G_prime.start, end_sign): {(end_sign, G_prime.start[:-1])}}
         # 求 I0 的闭包
         C = [self.LR1_CLOSURE(start_item)]
         while True:
@@ -139,8 +142,8 @@ class LR1Table:
         for i, I in enumerate(self.Collection):
             for head, bodies in I.items():
                 for body in bodies:
-                    if '.' in body[:-1]:  # CASE 2 a
-                        symbol_after_dot = body[body.index('.') + 1]
+                    if end_sign in body[:-1]:  # CASE 2 a
+                        symbol_after_dot = body[body.index(end_sign) + 1]
                         if symbol_after_dot in self.G_prime.terminals:
                             s = f's{self.Collection.index(self.LR1_GOTO(I, symbol_after_dot))}'
 
@@ -150,9 +153,9 @@ class LR1Table:
 
                                 parse_table[i][symbol_after_dot] += s
 
-                    elif body[-1] == '.' and head[0] != self.G_prime.start:  # CASE 2 b
+                    elif body[-1] == end_sign and head[0] != self.G_prime.start:  # CASE 2 b
                         for j, (G_head, G_body) in enumerate(self.G_indexed):
-                            if G_head == head[0] and (G_body == body[:-1] or G_body == ('^',) and body == ('.',)):
+                            if G_head == head[0] and (G_body == body[:-1] or G_body == ('^',) and body == (end_sign,)):
                                 if parse_table[i][head[1]]:
                                     exit(-1)
                                     parse_table[i][head[1]] += '/'
@@ -160,7 +163,7 @@ class LR1Table:
                                 break
 
                     else:  # CASE 2 c
-                        parse_table[i]['.'] = 'acc'
+                        parse_table[i][end_sign] = 'acc'
 
             for A in self.G_prime.nonterminals:  # CASE 3
                 j = self.LR1_GOTO(I, A)
