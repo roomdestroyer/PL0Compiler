@@ -35,4 +35,8 @@ class LR1TableUI(QWidget):
         mainlayout = QVBoxLayout()
         mainlayout.addWidget(self.Table)
         self.setLayout(mainlayout)
-        self.show()
+        # self.show()
+        pixmap = QPixmap(self.Table.size())
+        self.Table.render(pixmap)
+        pixmap.save("table_image.png")
+
