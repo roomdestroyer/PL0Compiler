@@ -1,6 +1,6 @@
 from .Grammar import Grammar
 
-end_sign = '$'
+end_sign = '#'
 dot_sign = '•'
 
 def first_follow(G):
@@ -57,14 +57,14 @@ class LR1Table:
 
         # 构建项目集规范族
         self.Collection = self.LR1_items(self.G_prime)
-        for i, item in enumerate(self.Collection):
-            print(i, ' ', item)
 
         # 构建LR1分析表
         self.action = sorted(list(self.G_prime.terminals)) + [end_sign]
         self.goto = sorted(list(self.G_prime.nonterminals - {self.G_prime.start}))
         self.parse_table_symbols = self.action + self.goto
         self.parse_table = self.LR1_construct_table()
+        
+        self.print_info()
 
     def construct_follow(self, s: tuple, extra: str) -> set:
         ret = set()
@@ -121,7 +121,6 @@ class LR1Table:
         return goto
 
     def LR1_items(self, G_prime):
-        # start_item == {("S'", '#'): {(dot_sign, 'S')}}
         start_item = {(G_prime.start, end_sign): {(dot_sign, G_prime.start[:-1])}}
         # 求 I0 的闭包
         C = [self.LR1_CLOSURE(start_item)]
@@ -171,7 +170,6 @@ class LR1Table:
 
                 if j in self.Collection:
                     parse_table[i][A] = self.Collection.index(j)
-        self.print_info()
         return parse_table
 
     def print_info(self):
@@ -185,3 +183,15 @@ class LR1Table:
         print('NONTERMINALS', self.G_prime.nonterminals)
         print('SYMBOLS', self.G_prime.symbols)
         print()
+
+        for i, item in enumerate(self.Collection):
+            print("I" + str(i) + ":")
+            for key in item:
+                left_sign = key[0]
+                follow_sign = key[1]
+                candidates = item[key]
+                for candidate in candidates:
+                    print('  ', left_sign, '-> ', end='')
+                    for character in candidate:
+                        print(character, end='')
+                    print(',', follow_sign)
