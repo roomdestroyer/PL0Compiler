@@ -1,4 +1,3 @@
-S' -> S
 S -> V = E
 S -> id
 V -> id

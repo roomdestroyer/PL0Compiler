@@ -167,6 +167,7 @@ class LR1Table:
 
                 if j in self.Collection:
                     parse_table[i][A] = self.Collection.index(j)
+        self.print_info()
         return parse_table
 
     def print_info(self):
@@ -179,3 +180,4 @@ class LR1Table:
         print('TERMINALS', self.G_prime.terminals)
         print('NONTERMINALS', self.G_prime.nonterminals)
         print('SYMBOLS', self.G_prime.symbols)
+        print()
