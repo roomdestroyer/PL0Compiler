@@ -7,7 +7,8 @@ def main():
     for file in os.listdir(lexer_input_dir):
         # with open(lexer_input_dir + "./" + file, "r") as input_file:
         with open(os.path.join(lexer_input_dir, file), "r") as input_file:
-            output_file = lexer_output_dir + "./" + file.split(".")[0] + ".out"
+            # output_file = lexer_output_dir + "./" + file.split(".")[0] + ".out"
+            output_file = os.path.join(lexer_output_dir, file.split(".")[0] + ".out")
             if os.path.exists(output_file):
                 os.remove(output_file)
             line = input_file.readline()
