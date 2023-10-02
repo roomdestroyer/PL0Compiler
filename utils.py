@@ -33,11 +33,10 @@ class Logger:
 
 root_path = get_project_path()
 grammar_file = os.path.join(root_path, "Parser", "LR1Table",
-                            "grammars", "grammar2.pl0")
+                            "grammars", "mygrammar.txt")
 lexer_input_dir = os.path.join(root_path, "Lexer", "LexerInput")
 lexer_output_dir = os.path.join(root_path, "Lexer", "LexerOutput")
 parser_output_dir = os.path.join(root_path, "Parser", "ParserOutput")
-
 
 # 在过程调用时，首先在栈中开辟三个空间，存放静态链SL、动态链DL（B）和返回地址RA（P）
 call_init_offset = 3
