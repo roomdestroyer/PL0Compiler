@@ -1,0 +1,6 @@
+S' -> S
+S -> V = E
+S -> id
+V -> id
+V -> id [ E ]
+E -> V

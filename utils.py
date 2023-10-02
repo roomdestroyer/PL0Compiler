@@ -33,7 +33,7 @@ class Logger:
 
 root_path = get_project_path()
 grammar_file = os.path.join(root_path, "Parser", "LR1Table",
-                            "grammars", "grammar2.pl0")
+                            "grammars", "mygrammar.txt")
 lexer_input_dir = os.path.join(root_path, "Lexer", "LexerInput")
 lexer_output_dir = os.path.join(root_path, "Lexer", "LexerOutput")
 parser_output_dir = os.path.join(root_path, "Parser", "ParserOutput")

@@ -1,7 +1,8 @@
 from .Grammar import Grammar
 from .LR1Table import LR1Table
-from PyQt5.QtWidgets import *
 import sys
+import wx
+import wx.grid as gridlib
 from .LR1TableUI import LR1TableUI
 
 
@@ -13,9 +14,7 @@ def GenLR1Table(grammar_file):
     lr1_table_ = lr1_parser.parse_table
     return action_, goto_, lr1_table_
 
-
 def GenTableUI(action_, goto_, lr1_table_):
-    app = QApplication(sys.argv)
-    w = LR1TableUI(action_, goto_, lr1_table_)
-    w.show()
-    app.exec_()
+    app = wx.App(False)
+    w = LR1TableUI(None, action_, goto_, lr1_table_)
+    app.MainLoop()

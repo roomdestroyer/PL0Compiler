@@ -32,6 +32,6 @@ def gen_lr1table_ui(grammar_file_):
 
 if __name__ == '__main__':
     # 执行一次预操作以生成所有PL0代码的中间代码，之后修改 parser_output_file_ 参数就可以执行其它代码
-    pre_operational()
+    # pre_operational()
     gen_lr1table_ui(grammar_file)
-    machine(parser_output_file_)
+    # machine(parser_output_file_)
